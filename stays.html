@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Stays — The Lost Inn | Curated Properties Across India</title>
+<meta name="description" content="Browse every premium stay by The Lost Inn — studios, apartments, farmhouses & villas. Curated stays in Ludhiana, Chandigarh & beyond.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   DESIGN TOKENS — IDENTICAL TO HOMEPAGE
+═══════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --forest:#1A2E1D;--forest-mid:#2A4A2E;--forest-light:#3D6642;
+  --ivory:#F7F2EA;--ivory-dark:#EDE5D5;--ivory-deep:#E5D9C8;
+  --clay:#C05638;--clay-dark:#9E4328;
+  --gold:#C8A45E;--gold-light:#E8C98A;
+  --charcoal:#1C1C1A;--text-muted:#5C5C58;--text-light:#8A8A85;
+  --sage:#4D6B44;--sand:#E3D5BC;--sand-light:#F0E8D8;--white:#FFFFFF;
+  --r-sm:6px;--r-md:12px;--r-lg:20px;--r-xl:32px;--r-2xl:48px;
+  --shadow-sm:0 2px 8px rgba(28,28,26,0.07);
+  --shadow-md:0 8px 32px rgba(28,28,26,0.11);
+  --shadow-lg:0 24px 64px rgba(28,28,26,0.16);
+  --shadow-xl:0 40px 96px rgba(28,28,26,0.22);
+  --tr:0.3s cubic-bezier(0.4,0,0.2,1);
+  --tr-slow:0.6s cubic-bezier(0.4,0,0.2,1);
+  --font-d:'Cormorant Garant',Georgia,serif;
+  --font-b:'Plus Jakarta Sans',-apple-system,sans-serif;
+  --font-price:'General Sans',var(--font-b);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);background:var(--ivory);color:var(--charcoal);overflow-x:hidden;font-size:15px;line-height:1.7}
+
+/* ── NAVIGATION (exact homepage) ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 3rem;height:74px;display:flex;align-items:center;justify-content:space-between;transition:background var(--tr),box-shadow var(--tr)}
+.nav.scrolled{background:rgba(26,46,29,0.97);backdrop-filter:blur(12px);box-shadow:0 2px 24px rgba(0,0,0,0.2)}
+.nav-logo{font-family:var(--font-d);font-size:1.45rem;font-weight:600;color:var(--white);letter-spacing:0.1em;text-decoration:none;text-transform:uppercase}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:1.75rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.82);text-decoration:none;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;transition:color var(--tr)}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.nav-links a.active{color:var(--gold)}
+.nav-cta{background:var(--clay) !important;color:var(--white) !important;padding:0.5rem 1.2rem;border-radius:50px;transition:background var(--tr) !important}
+.nav-cta:hover{background:var(--clay-dark) !important}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.nav-toggle span{width:24px;height:1.5px;background:var(--white);display:block;transition:var(--tr)}
+.mob-menu{display:none;position:fixed;inset:0;background:var(--forest);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--font-d);font-size:2.2rem;color:var(--white);text-decoration:none;font-weight:300;letter-spacing:0.04em;transition:color var(--tr)}
+.mob-menu a:hover{color:var(--gold)}
+.mob-close{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:rgba(255,255,255,0.7);cursor:pointer;background:none;border:none;line-height:1}
+
+/* ── GLOBAL BUTTONS (exact homepage) ── */
+.btn-primary{background:var(--clay);color:var(--white);padding:.9rem 2rem;border-radius:50px;font-size:.82rem;font-weight:600;letter-spacing:.05em;text-decoration:none;transition:background var(--tr),transform var(--tr),box-shadow var(--tr);display:inline-flex;align-items:center;gap:.5rem;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--clay-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(192,86,56,0.38)}
+.btn-outline-w{background:transparent;color:var(--white);padding:.9rem 2rem;border-radius:50px;font-size:.82rem;font-weight:500;letter-spacing:.05em;text-decoration:none;transition:background var(--tr),border-color var(--tr);display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid rgba(255,255,255,0.45)}
+.btn-outline-w:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.8)}
+.btn-forest{background:var(--forest);color:var(--white);padding:.875rem 2rem;border-radius:50px;font-size:.82rem;font-weight:600;letter-spacing:.05em;text-decoration:none;transition:background var(--tr),transform var(--tr);display:inline-flex;align-items:center;gap:.5rem;border:none;cursor:pointer}
+.btn-forest:hover{background:var(--forest-mid);transform:translateY(-2px)}
+.btn-white{background:var(--white);color:var(--clay);padding:.875rem 2.2rem;border-radius:50px;font-size:.85rem;font-weight:700;text-decoration:none;display:inline-block;transition:transform var(--tr),box-shadow var(--tr)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+
+/* ── SECTION BASE (exact homepage) ── */
+section{padding:5.5rem 3rem}
+.container{max-width:1240px;margin:0 auto}
+.s-tag{font-size:.62rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--clay);display:block;margin-bottom:.6rem}
+.s-title{font-family:var(--font-d);font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.08;letter-spacing:-.02em;margin-bottom:.9rem;color:var(--charcoal)}
+.s-title em{font-style:italic;color:var(--forest)}
+.s-sub{font-size:.9rem;color:var(--text-muted);max-width:520px;line-height:1.85}
+
+/* ── SCROLL REVEAL (exact homepage) ── */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.rv.vis{opacity:1;transform:translateY(0)}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+.rv.d4{transition-delay:.4s}.rv.d5{transition-delay:.5s}.rv.d6{transition-delay:.6s}
+
+/* ═══════════════════════════════════════
+   STAYS PAGE — HERO
+═══════════════════════════════════════ */
+.stays-hero{height:350px;min-height:350px;max-height:350px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:4.25rem 2rem 2rem}
+.stays-hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1920&q=80&auto=format&fit=crop');background-size:cover;background-position:center 40%;transform:scale(1.08);transition:transform 10s ease}
+.stays-hero-bg.loaded{transform:scale(1)}
+.stays-hero-overlay{position:absolute;inset:0;background:linear-gradient(165deg,rgba(26,46,29,0.62) 0%,rgba(26,46,29,0.52) 45%,rgba(28,28,26,0.78) 100%)}
+.stays-hero-content{position:relative;z-index:2;max-width:720px;padding:0 1.5rem}
+.stays-hero-title{font-family:var(--font-d);font-size:clamp(1.54rem,3.85vw,2.98rem);font-weight:300;color:var(--white);line-height:1.05;margin-bottom:.75rem;letter-spacing:-.025em}
+.stays-hero-title em{font-style:italic;color:var(--gold)}
+.stays-hero-sub{font-size:.9rem;color:rgba(255,255,255,0.75);font-weight:300;margin-bottom:1.5rem;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.75}
+.stays-hero-ctas{display:flex;justify-content:center}
+.stays-hero-ctas .btn-outline-w{padding:.85rem 1.85rem;font-size:.8rem}
+
+/* ═══════════════════════════════════════
+   FILTER BAR
+═══════════════════════════════════════ */
+.filter-strip{position:sticky;top:74px;z-index:100;background:rgba(247,242,234,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(227,213,188,0.6);padding:0 3rem;transition:background var(--tr),box-shadow var(--tr)}
+.filter-strip.elevated{box-shadow:0 4px 32px rgba(28,28,26,0.1)}
+.filter-strip-inner{max-width:1240px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:center;position:relative;gap:1.5rem}
+.filter-pills{display:flex;align-items:center;justify-content:center;gap:0.5rem;flex-wrap:nowrap}
+.filter-pill{display:inline-flex;align-items:center;gap:0.4rem;white-space:nowrap;padding:.4rem 1.1rem;border-radius:50px;border:1px solid var(--sand);background:transparent;font-family:var(--font-b);font-size:.72rem;font-weight:500;letter-spacing:.04em;color:var(--text-muted);cursor:pointer;transition:all var(--tr);flex-shrink:0}
+.filter-pill:hover{border-color:var(--forest);color:var(--forest);background:rgba(26,46,29,0.04)}
+.filter-pill.active{background:var(--forest);color:var(--gold);border-color:var(--forest);font-weight:600}
+.filter-pill .pill-count{font-size:.6rem;background:rgba(255,255,255,0.2);padding:.1rem .4rem;border-radius:50px;font-weight:700}
+.filter-pill.active .pill-count{background:rgba(200,164,94,0.25);color:var(--gold)}
+.filter-meta{display:flex;align-items:center;gap:1rem;flex-shrink:0;position:absolute;right:0;top:50%;transform:translateY(-50%)}
+.prop-result-count{font-size:.72rem;color:var(--text-muted);white-space:nowrap;font-weight:500}
+.prop-result-count strong{color:var(--charcoal);font-weight:700}
+
+/* ═══════════════════════════════════════
+   STAYS GRID SECTION
+═══════════════════════════════════════ */
+.stays-grid-section{background:var(--white);padding:4rem 3rem 6rem}
+.stays-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+
+/* ── STAY CARD — PREMIUM EDITORIAL (80% scale) ── */
+.stay-card{--card-scale:0.8;width:calc(100% * var(--card-scale));max-width:100%;margin-inline:auto;background:var(--white);border-radius:calc(var(--r-xl) * var(--card-scale));overflow:hidden;border:1px solid rgba(28,28,26,0.06);transition:transform var(--tr),box-shadow var(--tr);cursor:pointer;display:flex;flex-direction:column;position:relative}
+.stay-card:hover{transform:translateY(calc(-10px * var(--card-scale)));box-shadow:var(--shadow-xl)}
+
+/* Image */
+.stay-img-wrap{height:calc(278px * var(--card-scale));position:relative;overflow:hidden;flex-shrink:0}
+.stay-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform var(--tr-slow)}
+.stay-card:hover .stay-img{transform:scale(1.07)}
+
+/* Hover overlay on image */
+.stay-img-overlay{position:absolute;inset:0;background:rgba(26,46,29,0.5);opacity:0;transition:opacity .4s ease;display:flex;align-items:center;justify-content:center}
+.stay-card:hover .stay-img-overlay{opacity:1}
+.stay-img-overlay-btn{font-family:var(--font-d);font-size:calc(1.05rem * var(--card-scale));font-weight:300;color:var(--white);letter-spacing:.12em;border:1px solid rgba(255,255,255,0.55);padding:calc(.55rem * var(--card-scale)) calc(1.5rem * var(--card-scale));border-radius:50px;transition:background .2s,border-color .2s}
+.stay-img-overlay-btn:hover{background:rgba(255,255,255,0.12);border-color:var(--white)}
+
+/* Badges */
+.stay-type-tag{position:absolute;top:calc(1.1rem * var(--card-scale));left:calc(1.1rem * var(--card-scale));background:rgba(26,46,29,0.88);color:var(--gold);font-size:calc(.58rem * var(--card-scale));font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:calc(.3rem * var(--card-scale)) calc(.8rem * var(--card-scale));border-radius:50px;backdrop-filter:blur(6px);border:1px solid rgba(200,164,94,0.25)}
+.stay-featured-tag{position:absolute;top:calc(1.1rem * var(--card-scale));left:calc(1.1rem * var(--card-scale));background:rgba(192,86,56,0.9);color:var(--white);font-size:calc(.58rem * var(--card-scale));font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:calc(.3rem * var(--card-scale)) calc(.8rem * var(--card-scale));border-radius:50px;backdrop-filter:blur(6px)}
+.stay-save{position:absolute;top:calc(1.1rem * var(--card-scale));right:calc(1.1rem * var(--card-scale));width:calc(34px * var(--card-scale));height:calc(34px * var(--card-scale));background:rgba(255,255,255,0.9);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:calc(.95rem * var(--card-scale));transition:transform var(--tr),background var(--tr);color:var(--charcoal);backdrop-filter:blur(4px)}
+.stay-save:hover{transform:scale(1.12);background:var(--white)}
+.stay-save.saved{color:var(--clay)}
+
+/* Card body */
+.stay-body{padding:calc(1.5rem * var(--card-scale)) calc(1.6rem * var(--card-scale)) calc(1.6rem * var(--card-scale));display:flex;flex-direction:column;flex:1}
+.stay-loc{display:flex;align-items:center;gap:calc(.4rem * var(--card-scale));margin-bottom:calc(.4rem * var(--card-scale))}
+.stay-city-tag{font-size:calc(.6rem * var(--card-scale));font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--clay)}
+.stay-sep-dot{color:var(--text-light);font-size:calc(.65rem * var(--card-scale))}
+.stay-area-tag{font-size:calc(.6rem * var(--card-scale));font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)}
+.stay-name{font-family:var(--font-d);font-size:calc(1.55rem * var(--card-scale));font-weight:500;color:var(--charcoal);line-height:1.12;margin-bottom:calc(.45rem * var(--card-scale));letter-spacing:-.015em}
+.stay-tagline{font-family:var(--font-d);font-style:italic;font-size:calc(.9rem * var(--card-scale));font-weight:300;color:var(--text-muted);line-height:1.65;margin-bottom:calc(1.1rem * var(--card-scale))}
+.stay-stats-row{display:flex;align-items:center;gap:calc(.5rem * var(--card-scale));flex-wrap:wrap;margin-bottom:calc(.9rem * var(--card-scale))}
+.stay-stat{font-size:calc(.7rem * var(--card-scale));color:var(--text-muted);display:flex;align-items:center;gap:calc(.22rem * var(--card-scale))}
+.stay-stat-divider{width:3px;height:3px;border-radius:50%;background:var(--sand);display:inline-block}
+.stay-chips-row{display:flex;flex-wrap:wrap;gap:calc(.32rem * var(--card-scale));margin-bottom:calc(1.25rem * var(--card-scale));flex:1}
+.stay-chip{font-size:calc(.6rem * var(--card-scale));font-weight:500;padding:calc(.2rem * var(--card-scale)) calc(.62rem * var(--card-scale));border-radius:50px;background:var(--ivory);color:var(--text-muted);border:1px solid var(--sand);letter-spacing:.02em}
+.stay-card-foot{display:flex;align-items:center;justify-content:space-between;padding-top:calc(1.1rem * var(--card-scale));border-top:1px solid var(--ivory-dark);margin-top:auto}
+.stay-rate-wrap{display:flex;flex-direction:column;gap:.05rem;font-family:var(--font-price)}
+.stay-price-main{font-family:var(--font-price);font-size:calc(1.4rem * var(--card-scale));font-weight:600;color:var(--forest);line-height:1;letter-spacing:-.02em}
+.stay-price-note{font-size:calc(.62rem * var(--card-scale));color:var(--text-light);font-family:var(--font-price);font-weight:500;letter-spacing:.01em}
+.stay-book-cta{background:var(--forest);color:var(--white);padding:calc(.52rem * var(--card-scale)) calc(1.3rem * var(--card-scale));border-radius:50px;font-size:calc(.72rem * var(--card-scale));font-weight:700;text-decoration:none;letter-spacing:.04em;transition:background var(--tr),transform var(--tr);white-space:nowrap}
+.stay-book-cta:hover{background:var(--forest-mid);transform:translateY(-1px)}
+
+/* Rating strip */
+.stay-rating{position:absolute;bottom:calc(1.1rem * var(--card-scale));right:calc(1.1rem * var(--card-scale));background:rgba(247,242,234,0.95);display:flex;align-items:center;gap:calc(.25rem * var(--card-scale));padding:calc(.22rem * var(--card-scale)) calc(.6rem * var(--card-scale));border-radius:50px;font-size:calc(.62rem * var(--card-scale));font-weight:700;color:var(--charcoal);backdrop-filter:blur(4px)}
+.stay-rating-star{color:var(--gold);font-size:calc(.7rem * var(--card-scale))}
+
+/* Filtering transitions */
+.stay-card{transition:transform var(--tr),box-shadow var(--tr),opacity .28s ease}
+.stay-card.is-hidden{opacity:0;pointer-events:none;position:absolute;visibility:hidden}
+
+/* Empty state */
+.stays-empty{grid-column:1/-1;text-align:center;padding:5rem 2rem;display:none}
+.stays-empty.visible{display:block}
+.stays-empty-title{font-family:var(--font-d);font-size:2rem;font-weight:300;color:var(--charcoal);margin-bottom:.5rem}
+.stays-empty-sub{font-size:.88rem;color:var(--text-muted)}
+
+/* ═══════════════════════════════════════
+   EXPERIENCE BANNER (cinematic break)
+═══════════════════════════════════════ */
+.exp-banner{position:relative;height:300px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.exp-banner-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&q=80&auto=format&fit=crop');background-size:cover;background-position:center;transform:scale(1.04);transition:transform 8s ease}
+.exp-banner-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,46,29,0.78) 0%,rgba(28,28,26,0.72) 100%)}
+.exp-banner-content{position:relative;z-index:2;max-width:760px;padding:0 2rem}
+.exp-banner-ornament{font-family:var(--font-d);font-size:.6rem;font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;gap:1rem}
+.exp-banner-ornament::before,.exp-banner-ornament::after{content:'';display:block;width:40px;height:1px;background:rgba(200,164,94,0.4)}
+.exp-banner-title{font-family:var(--font-d);font-size:clamp(2.4rem,5vw,4rem);font-weight:300;color:var(--white);line-height:1.12;letter-spacing:-.02em;margin-bottom:1rem}
+.exp-banner-title em{font-style:italic;color:var(--gold-light)}
+.exp-banner-sub{font-size:.92rem;color:rgba(255,255,255,0.68);line-height:1.85;font-weight:300;max-width:480px;margin:0 auto 2rem}
+.exp-banner-cta{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:600;color:rgba(255,255,255,0.7);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.25);padding-bottom:2px;transition:color var(--tr),border-color var(--tr)}
+.exp-banner-cta:hover{color:var(--gold);border-color:var(--gold)}
+
+/* ═══════════════════════════════════════
+   COMING SOON SECTION
+═══════════════════════════════════════ */
+.cs-section{background:var(--forest-mid);padding:5.5rem 3rem}
+.cs-section .s-tag{color:var(--gold)}
+.cs-section .s-title{color:var(--white)}
+.cs-section .s-sub{color:rgba(255,255,255,0.6)}
+.cs-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;gap:2rem}
+.cs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.cs-card{border-radius:var(--r-xl);overflow:hidden;position:relative;border:1px solid rgba(255,255,255,0.08);cursor:pointer;transition:transform var(--tr)}
+.cs-card:hover{transform:translateY(-4px)}
+.cs-img{width:100%;height:340px;object-fit:cover;filter:blur(6px) brightness(0.35) saturate(0.6);transform:scale(1.06);display:block}
+.cs-info{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2.5rem 2rem}
+.cs-badge{display:inline-flex;align-items:center;gap:.35rem;background:var(--clay);color:var(--white);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.32rem .85rem;border-radius:50px;margin-bottom:1rem}
+.cs-city{font-family:var(--font-d);font-size:2.2rem;font-weight:300;color:var(--white);line-height:1;margin-bottom:.5rem;letter-spacing:-.01em}
+.cs-desc{font-size:.8rem;color:rgba(255,255,255,0.58);line-height:1.7;margin-bottom:1.5rem;max-width:220px}
+.cs-notify-btn{display:inline-flex;align-items:center;gap:.4rem;border:1px solid rgba(255,255,255,0.28);color:var(--white);font-size:.72rem;font-weight:500;padding:.52rem 1.3rem;border-radius:50px;cursor:pointer;transition:background var(--tr),border-color var(--tr);background:transparent;font-family:var(--font-b);letter-spacing:.04em}
+.cs-notify-btn:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.55)}
+.cs-notify-btn.notified{background:rgba(74,222,128,0.15);border-color:rgba(74,222,128,0.4);color:#4ade80}
+.cs-count-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:.68rem;padding:.3rem .85rem;border-radius:50px;font-weight:500;white-space:nowrap}
+
+/* ═══════════════════════════════════════
+   FAQ SECTION — PREMIUM LUXURY
+═══════════════════════════════════════ */
+.faq-section{background:var(--ivory);padding:6rem 3rem}
+.faq-layout{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1.8fr;gap:6rem;align-items:start}
+.faq-sidebar{}
+.faq-sidebar .s-title{margin-bottom:1rem}
+.faq-sidebar .s-sub{margin-bottom:1.75rem}
+.faq-contact-card{background:var(--forest);border-radius:var(--r-lg);padding:1.75rem;margin-top:2rem}
+.faq-contact-label{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;display:block}
+.faq-contact-text{font-size:.82rem;color:rgba(255,255,255,0.65);line-height:1.75;margin-bottom:1.25rem}
+.faq-contact-wa{display:inline-flex;align-items:center;gap:.5rem;background:rgba(200,164,94,0.15);border:1px solid rgba(200,164,94,0.3);color:var(--gold);font-size:.72rem;font-weight:600;padding:.5rem 1.1rem;border-radius:50px;text-decoration:none;letter-spacing:.05em;transition:background var(--tr)}
+.faq-contact-wa:hover{background:rgba(200,164,94,0.25)}
+.faq-list{border-top:1px solid var(--sand)}
+.faq-item{border-bottom:1px solid var(--sand);transition:background var(--tr)}
+.faq-q-btn{width:100%;text-align:left;background:none;border:none;padding:1.5rem 0;font-family:var(--font-b);font-size:.92rem;font-weight:600;color:var(--charcoal);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color var(--tr)}
+.faq-q-btn:hover{color:var(--forest)}
+.faq-icon-wrap{width:28px;height:28px;border-radius:50%;border:1px solid var(--sand);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background var(--tr),border-color var(--tr),transform var(--tr)}
+.faq-item.open .faq-icon-wrap{background:var(--forest);border-color:var(--forest);transform:rotate(45deg)}
+.faq-icon-wrap span{font-size:1.1rem;color:var(--text-muted);line-height:1;transition:color var(--tr)}
+.faq-item.open .faq-icon-wrap span{color:var(--gold)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .42s ease}
+.faq-answer-body{padding:0 0 1.4rem;font-size:.85rem;color:var(--text-muted);line-height:1.85;padding-right:2.5rem}
+
+/* ═══════════════════════════════════════
+   FINAL CTA
+═══════════════════════════════════════ */
+.final-cta-section{position:relative;padding:8rem 3rem;overflow:hidden;text-align:center}
+.final-cta-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80&auto=format&fit=crop');background-size:cover;background-position:center;transform:scale(1.04)}
+.final-cta-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(26,46,29,0.88) 0%,rgba(28,28,26,0.9) 100%)}
+.final-cta-content{position:relative;z-index:2;max-width:680px;margin:0 auto}
+.final-cta-tag{display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;padding:.35rem 1rem;border:1px solid rgba(200,164,94,0.3);border-radius:50px}
+.final-cta-title{font-family:var(--font-d);font-size:clamp(2.4rem,5vw,4rem);font-weight:300;color:var(--white);line-height:1.08;margin-bottom:1rem;letter-spacing:-.02em}
+.final-cta-title em{font-style:italic;color:var(--gold)}
+.final-cta-sub{font-size:.92rem;color:rgba(255,255,255,0.65);line-height:1.85;margin-bottom:2.75rem}
+.final-cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ═══════════════════════════════════════
+   FOOTER (exact homepage)
+═══════════════════════════════════════ */
+footer{background:var(--charcoal);padding:5rem 3rem 2rem;color:rgba(255,255,255,0.68)}
+.foot-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.6fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+.foot-logo{font-family:var(--font-d);font-size:1.5rem;font-weight:600;color:var(--white);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.5rem}
+.foot-logo span{color:var(--gold)}
+.foot-tagline{font-size:.82rem;font-style:italic;font-family:var(--font-d);color:rgba(255,255,255,0.42);margin-bottom:1rem}
+.foot-desc{font-size:.78rem;line-height:1.85;color:rgba(255,255,255,0.45);margin-bottom:1.4rem}
+.foot-social{display:flex;gap:.65rem}
+.soc-btn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);text-decoration:none;font-size:.75rem;transition:border-color var(--tr),color var(--tr)}
+.soc-btn:hover{border-color:var(--gold);color:var(--gold)}
+.foot-h{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--white);margin-bottom:1.2rem}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.foot-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:.8rem;transition:color var(--tr)}
+.foot-links a:hover{color:var(--white)}
+.foot-contact-item{display:flex;align-items:flex-start;gap:.7rem;margin-bottom:.8rem}
+.foot-ci{font-size:.85rem;color:var(--gold);margin-top:1px;flex-shrink:0}
+.foot-ct{font-size:.78rem;color:rgba(255,255,255,0.5);line-height:1.6}
+.foot-ct a{color:rgba(255,255,255,0.5);text-decoration:none}
+.foot-bottom{max-width:1240px;margin:2rem auto 0;display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:rgba(255,255,255,0.28);flex-wrap:wrap;gap:.5rem}
+
+/* ── WHATSAPP FLOAT (exact homepage) ── */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:900;display:flex;align-items:center;gap:.7rem;background:#25D366;color:var(--white);padding:.72rem 1.2rem;border-radius:50px;text-decoration:none;font-size:.78rem;font-weight:600;box-shadow:0 8px 24px rgba(37,211,102,0.38);transition:transform var(--tr),box-shadow var(--tr),opacity var(--tr);animation:wabounce 3.5s ease-in-out infinite;opacity:0}
+.wa-float.show{opacity:1}
+.wa-float:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(37,211,102,0.48);animation:none}
+@keyframes wabounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media(max-width:1100px){
+  .stays-grid{grid-template-columns:repeat(2,1fr);gap:1.2rem}
+  .faq-layout{grid-template-columns:1fr;gap:3rem}
+  .faq-sidebar{max-width:540px}
+  .cs-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .cs-header{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:768px){
+  section{padding:4.5rem 1.5rem}
+  .filter-strip{padding:0 1.5rem}
+  .filter-strip-inner{height:auto;min-height:64px;padding:.65rem 0;justify-content:center}
+  .filter-pills{flex-wrap:wrap;justify-content:center;width:100%;gap:.4rem .45rem;overflow:visible}
+  .filter-meta{position:static;transform:none;display:none}
+  .stays-grid-section{padding:3rem 1.5rem 5rem}
+  .faq-section{padding:4.5rem 1.5rem}
+  .final-cta-section{padding:6rem 1.5rem}
+  .nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .nav-toggle{display:flex;min-width:44px;min-height:44px;align-items:center;justify-content:center;padding:10px;margin-right:-6px}
+  .stays-grid{grid-template-columns:1fr;gap:1.4rem}
+  /* Hero — mobile only */
+  .stays-hero{height:300px;min-height:300px;max-height:300px;padding:4.5rem 1.25rem 1.5rem;justify-content:center}
+  .stays-hero-bg{background-position:center 35%}
+  .stays-hero-overlay{background:linear-gradient(180deg,rgba(26,46,29,0.5) 0%,rgba(26,46,29,0.68) 42%,rgba(28,28,26,0.92) 100%)}
+  .stays-hero-content{display:flex;flex-direction:column;align-items:center;width:100%;max-width:100%;padding:0 1.1rem;gap:0}
+  .stays-hero-title{font-size:1.65rem;line-height:1.12;margin-bottom:.7rem;max-width:18ch;padding:0 .15rem}
+  .stays-hero-sub{font-size:.88rem;margin-bottom:1.2rem;line-height:1.65;color:rgba(255,255,255,0.9);max-width:28ch;padding:0 .25rem}
+  .stays-hero-ctas{width:100%;max-width:min(100%,300px);margin:0 auto}
+  .stays-hero-ctas .btn-outline-w{width:100%;min-height:48px;padding:.85rem 1.25rem;font-size:.8rem;justify-content:center;-webkit-tap-highlight-color:transparent}
+  .stays-hero-sub{margin-bottom:1.15rem}
+  .cs-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .foot-bottom{flex-direction:column;text-align:center}
+  .final-cta-btns{flex-direction:column;align-items:center}
+  .stay-img-wrap{height:calc(240px * var(--card-scale))}
+  .prop-result-count{display:none}
+  footer{padding:4rem 1.5rem 2rem}
+}
+@media(max-width:480px){
+  .stays-hero{height:300px;min-height:300px;max-height:300px;padding:4.35rem 1rem 1.35rem}
+  .stays-hero-overlay{background:linear-gradient(180deg,rgba(26,46,29,0.55) 0%,rgba(28,28,26,0.94) 100%)}
+  .stays-hero-content{padding:0 .85rem}
+  .stays-hero-title{font-size:1.4rem;line-height:1.14;margin-bottom:.6rem;max-width:16ch}
+  .stays-hero-sub{font-size:.84rem;margin-bottom:1.05rem;line-height:1.6;max-width:26ch}
+  .stays-hero-ctas{max-width:100%}
+  .stays-hero-ctas .btn-outline-w{min-height:50px;font-size:.78rem}
+  .faq-layout{grid-template-columns:1fr}
+  .stay-body{padding:calc(1.25rem * var(--card-scale)) calc(1.35rem * var(--card-scale)) calc(1.4rem * var(--card-scale))}
+  .wa-float span{display:none}
+  .wa-float{padding:.72rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">The <span>Lost</span> Inn</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="stays.html" class="active" style="color:var(--gold)">Stays</a></li>
+    <li><a href="#">Experiences</a></li>
+    <li><a href="#">List Property</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Coming Soon</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="https://instagram.com" target="_blank">Instagram ↗</a></li>
+    <li><a href="https://wa.me/91XXXXXXXXXX" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="nav-toggle" id="menuToggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" id="mobClose" aria-label="Close">✕</button>
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="stays.html" onclick="closeMenu()" style="color:var(--gold)">Stays</a>
+  <a href="#" onclick="closeMenu()">Experiences</a>
+  <a href="#" onclick="closeMenu()">List Property</a>
+  <a href="#" onclick="closeMenu()">About</a>
+  <a href="#" onclick="closeMenu()">Contact</a>
+  <a href="https://wa.me/91XXXXXXXXXX" class="btn-primary" onclick="closeMenu()" style="margin-top:1rem;font-size:1rem">Book Now →</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="stays-hero" id="home">
+  <div class="stays-hero-bg" id="heroBg"></div>
+  <div class="stays-hero-overlay"></div>
+  <div class="stays-hero-content">
+    <h1 class="stays-hero-title rv d1">Find your kind of<br><em>escape.</em></h1>
+    <p class="stays-hero-sub rv d2">Curated stays across Ludhiana, Chandigarh & beyond</p>
+    <div class="stays-hero-ctas rv d3">
+      <a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C+I%27d+like+to+find+a+stay+at+The+Lost+Inn" target="_blank" class="btn-outline-w">Talk on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FILTER BAR ═══════════ -->
+<div class="filter-strip" id="filterStrip">
+  <div class="filter-strip-inner">
+    <div class="filter-pills" id="filterPills">
+      <button class="filter-pill active" data-filter="all">
+        All Stays <span class="pill-count" id="count-all">6</span>
+      </button>
+      <button class="filter-pill" data-filter="studio">
+        Studios <span class="pill-count" id="count-studio">3</span>
+      </button>
+      <button class="filter-pill" data-filter="apartment">
+        Apartments <span class="pill-count" id="count-apartment">1</span>
+      </button>
+      <button class="filter-pill" data-filter="villa">
+        Villas <span class="pill-count" id="count-villa">1</span>
+      </button>
+      <button class="filter-pill" data-filter="farmhouse">
+        Farmhouses <span class="pill-count" id="count-farmhouse">1</span>
+      </button>
+    </div>
+    <div class="filter-meta">
+      <span class="prop-result-count"><strong id="resultNum">6</strong> properties</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ STAYS GRID ═══════════ -->
+<div class="stays-grid-section" id="stays-grid">
+  <div class="stays-grid" id="staysGrid">
+
+    <!-- 1. THE LOFT -->
+    <article class="stay-card rv d1" data-category="studio">
+      <div class="stay-img-wrap">
+        <img class="stay-img" src="https://images.unsplash.com/photo-1555636222-cae831e670b3?w=700&q=80&auto=format&fit=crop" alt="The Loft" loading="lazy">
+        <span class="stay-type-tag">Studio</span>
+        <button class="stay-save" onclick="toggleSave(this)" aria-label="Save">♡</button>
+        <div class="stay-img-overlay"><span class="stay-img-overlay-btn">Explore Stay →</span></div>
+        <div class="stay-rating"><span class="stay-rating-star">★</span> 4.9</div>
+      </div>
+      <div class="stay-body">
+        <div class="stay-loc">
+          <span class="stay-city-tag">Ludhiana</span>
+          <span class="stay-sep-dot">·</span>
+          <span class="stay-area-tag">BRS Nagar</span>
+        </div>
+        <h3 class="stay-name">The Loft</h3>
+        <p class="stay-tagline">A sleek urban sanctuary made for slow mornings and intimate city evenings — every corner considered.</p>
+        <div class="stay-stats-row">
+          <span class="stay-stat">🛏 1 Bedroom</span>
+          <span class="stay-stat-divider"></span>
+          <span class="stay-stat">👥 Up to 2 Guests</span>
+          <span class="stay-stat-divider"></span>
+          <span class="stay-stat">🏢 1 BHK</span>
+        </div>
+        <div class="stay-chips-row">
+          <span class="stay-chip">Fast WiFi</span>
+          <span class="stay-chip">Air Conditioning</span>
+          <span class="stay-chip">Modular Kitchen</span>
+          <span class="stay-chip">Smart TV</span>
+          <span class="stay-chip">Work Desk</span>
+        </div>
+        <div class="stay-card-foot">
+          <div class="stay-rate-wrap">
+            <span class="stay-price-main">₹2,800</span>
+            <span class="stay-price-note">per night · direct booking</span>
+          </div>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C+I%27d+like+to+book+The+Loft" target="_blank" class="stay-book-cta">Book Now</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2. CASA WOODS -->
+    <article class="stay-card rv d2" data-category="apartment">
+      <div class="stay-img-wrap">
+        <img class="stay-img" src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&q=80&auto=format&fit=crop" alt="Casa Woods" loading="lazy">
+        <span class="stay-type-tag">Apartment</span>
+        <button class="stay-save" onclick="toggleSave(this)" aria-label="Save">♡</button>
+        <div class="stay-img-overlay"><span class="stay-img-overlay-btn">Explore Stay →</span></div>
+        <div class="stay-rating"><span class="stay-rating-star">★</span> 4.8</div>
+      </div>
+      <div class="stay-body">
+        <div class="stay-loc">
+          <span class="stay-city-tag">Ludhiana</span>
+          <span class="stay-sep-dot">·</span>
+          <span class="stay-area-tag">BRS Nagar</span>
+        </div>
+        <h3 class="stay-name">Casa Woods</h3>
+        <p class="stay-tagline">A warmly appointed apartment surrounded by green avenues — where families and couples come home to something beautiful.</p>
+        <div class="stay-stats-row">
+          <span class="stay-stat">🛏 2 Bedrooms</span>
+          <span class="stay-stat-divider"></span>
+          <span class="stay-stat">👥 Up to 4 Guests</span>
+          <span class="stay-stat-divider"></span>
+          <span class="stay-stat">🏢 2 BHK</span>
+        </div>
+        <div class="stay-chips-row">
+          <span class="stay-chip">Parking</span>
+          <span class="stay-chip">Smart TV</span>
+          <span class="stay-chip">Laundry</span>
+          <span class="stay-chip">Full Kitchen</span>
+          <span class="stay-chip">Balcony</span>
+        </div>
+        <div class="stay-card-foot">
+          <div class="stay-rate-wrap">
+            <span class="stay-price-main">₹5,500</span>
+            <span class="stay-price-note">per night · direct booking</span>
+          </div>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C+I%27d+like+to+book+Casa+Woods" target="_blank" class="stay-book-cta">Book Now</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3. LAGOON FARM HOUSE (FEATURED) -->
+    <article class="stay-card rv d3" data-category="farmhouse">
+      <div class="stay-img-wrap">
+        <img class="stay-img" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80&auto=format&fit=crop" alt="Lagoon Farm House" loading="lazy">
+        <span class="stay-featured-tag">✦ Featured</span>
+        <button class="stay-save" onclick="toggleSave(this)" aria-label="Save">♡</button>
+        <div class="stay-img-overlay"><span class="stay-img-overlay-btn">Explore Stay →</span></div>
+        <div class="stay-rating"><span class="stay-rating-star">★</span> 5.0</div>
+      </div>
+      <div class="stay-body">
+        <div class="stay-loc">
+          <span class="stay-city-tag">Ludhiana</span>
+          <span class="stay-sep-dot">·</span>
+          <span class="stay-area-tag">South City</span>
+        </div>
+        <h3 class="stay-name">Lagoon Farm House</h3>
+        <p class="stay-tagline">An expansive private farmhouse for celebrations, weekend escapes, and gatherings where memories are made under open skies.</p>
+        <div class="stay-stats-row">
+          <span class="stay-stat">🏡 2 BHK + Lawn</span>
+          <span class="stay-stat-divider"></span>
+          <span class="stay-stat">👥 Up to 20 Guests</span>
+          <span class="stay-stat-divider"></span>
+          <span class="stay-stat">🎉 Events</span>
+        </div>
+        <div class="stay-chips-row">
+          <span class="stay-chip">Private Lawn</span>
+          <span class="stay-chip">Events Allowed</span>
+          <span class="stay-chip">Sound System</span>
+          <span class="stay-chip">Catering Ready</span>
+          <span class="stay-chip">DJ Setup</span>
+        </div>
+        <div class="stay-card-foot">
+          <div class="stay-rate-wrap">
+            <span class="stay-price-main">₹18,000</span>
+            <span class="stay-price-note">per night · events from ₹25,000</span>
+          </div>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C+I%27d+like+to+book+Lagoon+Farm+House" target="_blank" class="stay-book-cta">Book Now</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4. AURA STUDIO -->
+    <article class="stay-card rv d1" data-category="studio">
+      <div class="stay-img-wrap">
+        <img class="stay-img" src="https://images.unsplash.com/photo-1554995207-c18c203602cb?w=700&q=80&auto=format&fit=crop" alt="Aura Studio" loading="lazy">
+        <span class="stay-type-tag">Studio</span>
+        <button class="stay-save" onclick="toggleSave(this)" aria-label="Save">♡</button>
+        <div class="stay-img-overlay"><span class="stay-img-overlay-btn">Explore Stay →</span></div>
+        <div class="stay-rating"><span class="stay-rating-star">★</span> 4.9</div>
+      </div>
+      <div class="stay-body">
+        <div class="stay-loc">
+          <span class="stay-city-tag">Ludhiana</span>
+          <span class="stay-sep-dot">·</span>
+          <span class="stay-area-tag">Omaxe</span>
+        </div>
+        <h3 class="stay-name">Aura Studio</h3>
+        <p class="stay-tagline">Curated for work and rest in equal measure — a minimal-luxe studio with every premium detail thought through.</p>
+        <div class="stay-stats-row">
+          <span class="stay-stat">🛏 1 Bedroom</span>
+          <span class="stay-stat-divider"></span>
+          <span class="stay-stat">👥 Up to 2 Guests</span>
+          <span class="stay-stat-divider"></span>
+          <span class="stay-stat">💼 Workation</span>
+        </div>
+        <div class="stay-chips-row">
+          <span class="stay-chip">Nespresso</span>
+          <span class="stay-chip">Bathtub</span>
+          <span class="stay-chip">Standing Desk</span>
+          <span class="stay-chip">Monsoon Shower</span>
+          <span class="stay-chip">AC</span>
+        </div>
+        <div class="stay-card-foot">
+          <div class="stay-rate-wrap">
+            <span class="stay-price-main">₹3,200</span>
+            <span class="stay-price-note">per night · direct booking</span>
+          </div>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C+I%27d+like+to+book+Aura+Studio" target="_blank" class="stay-book-cta">Book Now</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5. MENDELLIN -->
+    <article class="stay-card rv d2" data-category="studio">
+      <div class="stay-img-wrap">
+        <img class="stay-img" src="https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=700&q=80&auto=format&fit=crop" alt="Mendellin" loading="lazy">
+        <span class="stay-type-tag">Studio</span>
+        <button class="stay-save" onclick="toggleSave(this)" aria-label="Save">♡</button>
+        <div class="stay-img-overlay"><span class="stay-img-overlay-btn">Explore Stay →</span></div>
+        <div class="stay-rating"><span class="stay-rating-star">★</span> 4.8</div>
+      </div>
+      <div class="stay-body">
+        <div class="stay-loc">
+          <span class="stay-city-tag">Ludhiana</span>
+          <span class="stay-sep-dot">·</span>
+          <span class="stay-area-tag">Rajgarh Estate</span>
+        </div>
+        <h3 class="stay-name">Mendellin</h3>
+        <p class="stay-tagline">A character-rich studio in an elegant colonial enclave — for those who crave intimacy, quiet, and unhurried luxury.</p>
+        <div class="stay-stats-row">
+          <span class="stay-stat">🛏 1 Bedroom</span>
+          <span class="stay-stat-divider"></span>
+          <span class="stay-stat">👥 Up to 2 Guests</span>
+          <span class="stay-stat-divider"></span>
+          <span class="stay-stat">🌳 Quiet</span>
+        </div>
+        <div class="stay-chips-row">
+          <span class="stay-chip">Designer Décor</span>
+          <span class="stay-chip">Quiet Locale</span>
+          <span class="stay-chip">Fast WiFi</span>
+          <span class="stay-chip">Air Conditioning</span>
+          <span class="stay-chip">Vintage Accents</span>
+        </div>
+        <div class="stay-card-foot">
+          <div class="stay-rate-wrap">
+            <span class="stay-price-main">₹3,000</span>
+            <span class="stay-price-note">per night · direct booking</span>
+          </div>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C+I%27d+like+to+book+Mendellin" target="_blank" class="stay-book-cta">Book Now</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6. BACKYARD JUNGLE (FEATURED) -->
+    <article class="stay-card rv d3" data-category="villa">
+      <div class="stay-img-wrap">
+        <img class="stay-img" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80&auto=format&fit=crop" alt="The Backyard Jungle" loading="lazy">
+        <span class="stay-featured-tag">✦ Featured</span>
+        <button class="stay-save" onclick="toggleSave(this)" aria-label="Save">♡</button>
+        <div class="stay-img-overlay"><span class="stay-img-overlay-btn">Explore Stay →</span></div>
+        <div class="stay-rating"><span class="stay-rating-star">★</span> 5.0</div>
+      </div>
+      <div class="stay-body">
+        <div class="stay-loc">
+          <span class="stay-city-tag">Chandigarh</span>
+          <span class="stay-sep-dot">·</span>
+          <span class="stay-area-tag">Tricity</span>
+        </div>
+        <h3 class="stay-name">The Backyard Jungle</h3>
+        <p class="stay-tagline">Two homes, one lush garden sanctuary — a sprawling 5 BHK experience for groups who want something truly beyond ordinary.</p>
+        <div class="stay-stats-row">
+          <span class="stay-stat">🛏 5 Bedrooms</span>
+          <span class="stay-stat-divider"></span>
+          <span class="stay-stat">👥 Up to 12 Guests</span>
+          <span class="stay-stat-divider"></span>
+          <span class="stay-stat">🌿 Garden</span>
+        </div>
+        <div class="stay-chips-row">
+          <span class="stay-chip">Private Garden</span>
+          <span class="stay-chip">BBQ Grill</span>
+          <span class="stay-chip">Events Allowed</span>
+          <span class="stay-chip">5 Bedrooms</span>
+          <span class="stay-chip">Group Stay</span>
+        </div>
+        <div class="stay-card-foot">
+          <div class="stay-rate-wrap">
+            <span class="stay-price-main">₹22,000</span>
+            <span class="stay-price-note">per night · from ₹12,000 (2BHK)</span>
+          </div>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C+I%27d+like+to+book+The+Backyard+Jungle" target="_blank" class="stay-book-cta">Book Now</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Empty state -->
+    <div class="stays-empty" id="staysEmpty">
+      <div class="stays-empty-title">No stays found in this category.</div>
+      <div class="stays-empty-sub" style="margin-top:.5rem">Try "All Stays" or <a href="https://wa.me/91XXXXXXXXXX" style="color:var(--clay)">WhatsApp us</a> — we have more coming.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════ EXPERIENCE BANNER ═══════════ -->
+<div class="exp-banner rv">
+  <div class="exp-banner-bg" id="expBannerBg"></div>
+  <div class="exp-banner-overlay"></div>
+  <div class="exp-banner-content">
+    <div class="exp-banner-ornament">The Lost Inn Philosophy</div>
+    <h2 class="exp-banner-title">Not just places to stay.<br><em>Places to feel something.</em></h2>
+    <p class="exp-banner-sub">Every property we curate is chosen for its ability to slow you down, open you up, and give you something to carry home long after check-out.</p>
+    <a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C+help+me+find+the+perfect+stay+at+The+Lost+Inn" target="_blank" class="exp-banner-cta">
+      Find Your Stay → 
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════ COMING SOON ═══════════ -->
+<section class="cs-section" id="coming">
+  <div class="container">
+    <div class="cs-header">
+      <div>
+        <span class="s-tag rv">Expanding Soon</span>
+        <h2 class="s-title rv d1">Where we're<br><em>headed next</em></h2>
+        <p class="s-sub rv d2">The map is growing. Get notified when new cities go live.</p>
+      </div>
+      <div class="cs-count-badge rv d2">
+        <span style="font-size:1rem">🌍</span> 3 new cities loading
+      </div>
+    </div>
+    <div class="cs-grid">
+
+      <div class="cs-card rv d1">
+        <img class="cs-img" src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=700&q=80&auto=format&fit=crop" alt="Chandigarh" loading="lazy">
+        <div class="cs-info">
+          <span class="cs-badge">Launching Soon</span>
+          <div class="cs-city">Chandigarh</div>
+          <div class="cs-desc">More premium properties across the Tricity — studios, villas, and nature retreats dropping soon.</div>
+          <button class="cs-notify-btn" onclick="notifyCity(this,'Chandigarh')">🔔 Notify Me</button>
+        </div>
+      </div>
+
+      <div class="cs-card rv d2">
+        <img class="cs-img" src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=700&q=80&auto=format&fit=crop" alt="New Delhi" loading="lazy">
+        <div class="cs-info">
+          <span class="cs-badge">Coming 2025</span>
+          <div class="cs-city">New Delhi</div>
+          <div class="cs-desc">The capital deserves the best. Our most ambitious expansion — premium stays for India's most demanding travellers.</div>
+          <button class="cs-notify-btn" onclick="notifyCity(this,'New Delhi')">🔔 Notify Me</button>
+        </div>
+      </div>
+
+      <div class="cs-card rv d3">
+        <img class="cs-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80&auto=format&fit=crop" alt="Shimla" loading="lazy">
+        <div class="cs-info">
+          <span class="cs-badge">Exploring</span>
+          <div class="cs-city">Shimla</div>
+          <div class="cs-desc">Colonial heritage, cedar forests, and mountain light. We're scouting the most cinematic stays in the hills.</div>
+          <button class="cs-notify-btn" onclick="notifyCity(this,'Shimla')">🔔 Notify Me</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="faq-layout">
+
+      <!-- Sidebar -->
+      <div class="faq-sidebar">
+        <span class="s-tag rv">Got Questions</span>
+        <h2 class="s-title rv d1">Everything you<br><em>need to know</em></h2>
+        <p class="s-sub rv d2">Can't find what you're looking for? We're always just one message away.</p>
+        <div class="faq-contact-card rv d3">
+          <span class="faq-contact-label">Still have questions?</span>
+          <p class="faq-contact-text">Our hospitality team is available 7 days a week to help you find the perfect stay, answer any queries, and ensure a seamless booking experience.</p>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C+I+have+a+question+about+staying+at+The+Lost+Inn" target="_blank" class="faq-contact-wa">
+            💬 Chat with us on WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Accordion -->
+      <div class="faq-list rv d1">
+
+        <div class="faq-item">
+          <button class="faq-q-btn">
+            How do I book a stay?
+            <div class="faq-icon-wrap"><span>+</span></div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-body">The simplest way is to tap "Book Now" on any property card and you'll be connected directly via WhatsApp. You can also browse on Airbnb or drop us a message on Instagram. We confirm bookings within the hour, and you'll receive a full digital guide 24 hours before arrival.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q-btn">
+            Is early check-in or late check-out available?
+            <div class="faq-icon-wrap"><span>+</span></div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-body">Standard check-in is 2:00 PM and check-out is 11:00 AM. Early check-in and late check-out are available based on the property's schedule. Just let us know your travel plans on WhatsApp when you book and we'll do our best to accommodate you — usually at no extra cost.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q-btn">
+            Are parties or events allowed at the properties?
+            <div class="faq-icon-wrap"><span>+</span></div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-body">Events and private gatherings are permitted at select properties like Lagoon Farm House and The Backyard Jungle — these are specifically designed for celebrations. Residential properties like The Loft, Casa Woods, Aura Studio, and Mendellin are for private stays only. Always declare your plans at booking so we can make the right recommendation.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q-btn">
+            Are pets allowed?
+            <div class="faq-icon-wrap"><span>+</span></div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-body">We love pets. Select properties are pet-friendly — please mention your furry companion when booking and we'll confirm availability. A small refundable pet deposit may apply to cover any incidentals. We believe in making stays feel like home, and that includes your four-legged family members.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q-btn">
+            What payment methods do you accept?
+            <div class="faq-icon-wrap"><span>+</span></div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-body">For direct bookings (via WhatsApp), we accept UPI, bank transfer, credit/debit cards, and cash. Airbnb bookings follow Airbnb's payment process. Direct bookings always get the best rate — typically 10–15% lower than Airbnb because there are no platform fees.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q-btn">
+            What is your cancellation policy?
+            <div class="faq-icon-wrap"><span>+</span></div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-body">Cancellations made 72+ hours before check-in receive a full refund. Cancellations 48–72 hours before check-in receive a 50% refund. Cancellations within 48 hours are non-refundable. In genuine emergencies, we always try to find a solution — just reach out directly and we'll do our best.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q-btn">
+            Will someone be available during my stay?
+            <div class="faq-icon-wrap"><span>+</span></div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-body">Absolutely. Every stay comes with a dedicated host contact available on WhatsApp from check-in to check-out. We also provide a full digital guide covering everything you need — nearest restaurants, emergency contacts, property tips, and local recommendations. You're never on your own.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q-btn">
+            Can I list my property with The Lost Inn?
+            <div class="faq-icon-wrap"><span>+</span></div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-body">Yes — and we'd love to talk. We manage properties end-to-end: photography, Airbnb listing, guest management, pricing, marketing, and monthly payouts. Most owners see 2–4x more income compared to managing independently. Fill out our property audit form on the "List Your Property" page or drop us a WhatsApp message to get started.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FINAL CTA ═══════════ -->
+<section class="final-cta-section">
+  <div class="final-cta-bg"></div>
+  <div class="final-cta-overlay"></div>
+  <div class="final-cta-content">
+    <span class="final-cta-tag rv">Ready to Escape</span>
+    <h2 class="final-cta-title rv d1">Your next escape<br><em>is waiting.</em></h2>
+    <p class="final-cta-sub rv d2">Browse our full collection of premium stays — or let us find the perfect one for you. The best rate is always direct.</p>
+    <div class="final-cta-btns rv d3">
+      <a href="#stays-grid" class="btn-white">Explore Stays ↑</a>
+      <a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C+help+me+find+the+perfect+stay+at+The+Lost+Inn" target="_blank" class="btn-outline-w">WhatsApp Us →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer id="contact">
+  <div class="foot-grid">
+    <div>
+      <span class="foot-logo">The <span>Lost</span> Inn</span>
+      <div class="foot-tagline">Find stays worth getting lost in.</div>
+      <div class="foot-desc">Premium curated short-stay properties across India. Homestays, villas, farmhouses, studios & event spaces — managed end-to-end for guests and owners.</div>
+      <div class="foot-social">
+        <a href="https://instagram.com" target="_blank" class="soc-btn" aria-label="Instagram">IG</a>
+        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="soc-btn" aria-label="WhatsApp">WA</a>
+        <a href="https://airbnb.com" target="_blank" class="soc-btn" aria-label="Airbnb">AB</a>
+        <a href="mailto:hello@thelostinn.in" class="soc-btn" aria-label="Email">✉</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-h">Quick Links</div>
+      <ul class="foot-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="stays.html">All Stays</a></li>
+        <li><a href="#">Experiences</a></li>
+        <li><a href="#">List Your Property</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Coming Soon</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Our Stays</div>
+      <ul class="foot-links">
+        <li><a href="#">The Loft · Ludhiana</a></li>
+        <li><a href="#">Casa Woods · Ludhiana</a></li>
+        <li><a href="#">Lagoon Farm House</a></li>
+        <li><a href="#">Aura Studio</a></li>
+        <li><a href="#">Mendellin</a></li>
+        <li><a href="#">Backyard Jungle · Chd</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Contact Us</div>
+      <div class="foot-contact-item">
+        <span class="foot-ci">📍</span>
+        <div class="foot-ct">BRS Nagar, Ludhiana<br>Punjab, India — 141013</div>
+      </div>
+      <div class="foot-contact-item">
+        <span class="foot-ci">📞</span>
+        <div class="foot-ct"><a href="tel:+91XXXXXXXXXX">+91 XXXXX XXXXX</a></div>
+      </div>
+      <div class="foot-contact-item">
+        <span class="foot-ci">✉</span>
+        <div class="foot-ct"><a href="mailto:hello@thelostinn.in">hello@thelostinn.in</a></div>
+      </div>
+      <div class="foot-contact-item">
+        <span class="foot-ci">📸</span>
+        <div class="foot-ct"><a href="https://instagram.com" target="_blank">@thelostinn.in</a></div>
+      </div>
+      <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="btn-primary" style="margin-top:1rem;font-size:.75rem;padding:.55rem 1.1rem">💬 Chat on WhatsApp</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© 2025 The Lost Inn. All rights reserved.</div>
+    <div style="display:flex;gap:1.5rem">
+      <a href="#" style="color:rgba(255,255,255,0.28);text-decoration:none">Privacy Policy</a>
+      <a href="#" style="color:rgba(255,255,255,0.28);text-decoration:none">Terms of Service</a>
+      <a href="#" style="color:rgba(255,255,255,0.28);text-decoration:none">Cancellation Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C+I%27d+like+to+book+a+stay+at+The+Lost+Inn" target="_blank" class="wa-float" id="waFloat">
+  <span>💬</span>
+  <span>Book via WhatsApp</span>
+</a>
+
+<script>
+// ── NAV SCROLL ──────────────────────────────────────────────
+const nav = document.getElementById('nav');
+const heroBg = document.getElementById('heroBg');
+const filterStrip = document.getElementById('filterStrip');
+const waFloat = document.getElementById('waFloat');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 60);
+  if (heroBg) heroBg.style.transform = `translateY(${y * 0.28}px) scale(1.08)`;
+  waFloat.classList.toggle('show', y > 320);
+
+  // Elevate filter strip when it sticks
+  const stripTop = filterStrip.getBoundingClientRect().top;
+  filterStrip.classList.toggle('elevated', stripTop <= 74);
+});
+
+// ── HERO BG LOAD ────────────────────────────────────────────
+window.addEventListener('load', () => {
+  document.getElementById('heroBg')?.classList.add('loaded');
+  document.getElementById('expBannerBg')?.classList.add('loaded');
+});
+
+// ── MOBILE MENU ─────────────────────────────────────────────
+document.getElementById('menuToggle').addEventListener('click', () => {
+  document.getElementById('mobMenu').classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+document.getElementById('mobClose').addEventListener('click', closeMenu);
+function closeMenu() {
+  document.getElementById('mobMenu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── SCROLL REVEAL ────────────────────────────────────────────
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.rv').forEach(el => revealObs.observe(el));
+
+// ── FILTER SYSTEM ─────────────────────────────────────────────
+const pills = document.querySelectorAll('.filter-pill');
+const cards = document.querySelectorAll('.stay-card');
+const resultNum = document.getElementById('resultNum');
+const emptyState = document.getElementById('staysEmpty');
+let activeFilter = 'all';
+
+function applyFilter(category) {
+  activeFilter = category;
+  let count = 0;
+  let visibleCards = [];
+  let hiddenCards = [];
+
+  cards.forEach(card => {
+    const match = category === 'all' || card.dataset.category === category;
+    if (match) { visibleCards.push(card); count++; }
+    else { hiddenCards.push(card); }
+  });
+
+  // Fade out hidden
+  hiddenCards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(8px) scale(0.97)';
+    setTimeout(() => { card.style.display = 'none'; }, 280);
+  });
+
+  // Show + fade in visible
+  setTimeout(() => {
+    visibleCards.forEach((card, i) => {
+      card.style.display = '';
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(12px) scale(0.98)';
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          card.style.transition = 'opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease';
+          card.style.opacity = '1';
+          card.style.transform = '';
+        }, i * 55);
+      });
+    });
+
+    // After animation, reset transition to default
+    setTimeout(() => {
+      cards.forEach(card => {
+        card.style.transition = '';
+      });
+    }, visibleCards.length * 55 + 500);
+
+    // Empty state
+    if (emptyState) emptyState.classList.toggle('visible', count === 0);
+    if (resultNum) resultNum.textContent = count;
+  }, hiddenCards.length > 0 ? 300 : 0);
+}
+
+pills.forEach(pill => {
+  pill.addEventListener('click', () => {
+    pills.forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    applyFilter(pill.dataset.filter);
+  });
+});
+
+// ── FAQ ACCORDION ─────────────────────────────────────────────
+document.querySelectorAll('.faq-q-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const answer = item.querySelector('.faq-answer');
+    const wasOpen = item.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-answer').style.maxHeight = '0';
+    });
+
+    // Open clicked if was closed
+    if (!wasOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+});
+
+// ── WISHLIST / SAVE ──────────────────────────────────────────
+function toggleSave(btn) {
+  btn.classList.toggle('saved');
+  btn.textContent = btn.classList.contains('saved') ? '♥' : '♡';
+
+  // Pulse animation
+  btn.style.transform = 'scale(1.3)';
+  setTimeout(() => { btn.style.transform = ''; }, 200);
+}
+
+// ── COMING SOON NOTIFY ───────────────────────────────────────
+function notifyCity(btn, city) {
+  btn.classList.add('notified');
+  btn.textContent = `✓ We'll notify you!`;
+  btn.disabled = true;
+  // In production: connect to Mailchimp/form handler
+}
+
+// ── SMOOTH ANCHOR SCROLLING ──────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+      closeMenu();
+    }
+  });
+});
+</script>
+<!-- Dev only: auto-refresh preview when stays.html is saved (localhost) -->
+<script>
+(function livePreviewReload() {
+  var host = location.hostname;
+  if (host !== 'localhost' && host !== '127.0.0.1') return;
+  var lastMod = '';
+  setInterval(function () {
+    fetch(location.pathname, { method: 'HEAD', cache: 'no-store' })
+      .then(function (res) {
+        var mod = res.headers.get('Last-Modified') || '';
+        if (lastMod && mod && mod !== lastMod) location.reload();
+        lastMod = mod;
+      })
+      .catch(function () {});
+  }, 700);
+})();
+</script>
+</body>
+</html>
